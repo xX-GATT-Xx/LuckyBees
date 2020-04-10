@@ -1,2 +1,2 @@
 # LuckyPandas
-A Slimefun Addon
+A Slimefun4 Addon
