@@ -1,4 +1,4 @@
-package dev.j3fftw;
+package dev.j3fftw.luckypanda;
 
 import org.bukkit.event.Listener;
 

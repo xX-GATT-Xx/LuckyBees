@@ -1,4 +1,4 @@
-package dev.j3fftw;
+package dev.j3fftw.luckypanda;
 
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import org.bukkit.plugin.java.JavaPlugin;
