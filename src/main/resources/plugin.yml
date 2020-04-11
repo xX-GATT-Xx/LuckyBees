@@ -1,0 +1,11 @@
+name: LuckyPanda
+description: LuckyPandas!!!!
+version: 1.0
+api-version: 1.14
+author: J3fftw/WalshyDev
+depend: [Slimefun]
+main: dev.j3fftw.luckypanda.LuckyPanda
+
+commands:
+  lucky:
+    description: No

@@ -33,12 +33,6 @@
             <version>ff154c4716</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>com.github.TheBusyBiscuit</groupId>
-            <artifactId>CS-CoreLib</artifactId>
-            <version>v1.6.1</version>
-            <scope>provided</scope>
-        </dependency>
 
         <dependency>
             <groupId>com.google.code.findbugs</groupId>
@@ -82,7 +76,7 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
-                            <outputFile>D:\Workspace\Test-Servers\1.14biggat-test\plugins\EnderPanda.jar</outputFile>
+                            <outputFile>/home/walshy/Documents/Servers/Test/plugins/EnderPanda.jar</outputFile>
                         </configuration>
                     </execution>
                 </executions>
