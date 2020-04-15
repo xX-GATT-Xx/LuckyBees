@@ -8,13 +8,14 @@ import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashSet;
+import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 
 public final class LuckyPanda extends JavaPlugin implements SlimefunAddon {
 
     private static LuckyPanda instance;
 
-    private final HashSet<Surprise> surprises = new HashSet<>();
+    private final Set<Surprise> surprises = new HashSet<>();
 
     @Override
     public void onEnable() {
