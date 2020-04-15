@@ -48,7 +48,7 @@ public final class LuckyPanda extends JavaPlugin implements SlimefunAddon {
     }
 
     public Surprise getRandomSurprise() {
-        int randomValue = ThreadLocalRandom.current().nextInt(surprises.size());
+        final int randomValue = ThreadLocalRandom.current().nextInt(surprises.size());
         short tmp = 0;
         for (Surprise surprise : surprises) {
             if (tmp++ == randomValue) {

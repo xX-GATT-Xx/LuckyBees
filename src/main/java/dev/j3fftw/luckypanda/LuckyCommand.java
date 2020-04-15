@@ -15,8 +15,8 @@ public class LuckyCommand implements CommandExecutor {
     @Override
     @ParametersAreNonnullByDefault
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
-        Player player = (Player) commandSender;
-        Block block = player.getWorld().getBlockAt(player.getLocation().clone().subtract(0, 2, 0));
+        final Player player = (Player) commandSender;
+        final Block block = player.getWorld().getBlockAt(player.getLocation().clone().subtract(0, 2, 0));
 
         if (args.length != 0) {
 
