@@ -33,7 +33,7 @@ public class JailAnvilSurprise implements Surprise {
                 }
             }
         }
-        player.getLocation().clone().add(0, 50, 0).getBlock().setType(Material.ANVIL);
-        player.getLocation().clone().add(0, 51, 0).getBlock().setType(Material.ANVIL);
+        playerLoc.clone().add(0, 50, 0).getBlock().setType(Material.ANVIL);
+        playerLoc.clone().add(0, 51, 0).getBlock().setType(Material.ANVIL);
     }
 }
