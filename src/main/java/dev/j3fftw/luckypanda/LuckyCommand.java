@@ -21,15 +21,14 @@ public class LuckyCommand implements CommandExecutor {
         Block block = player.getWorld().getBlockAt(player.getLocation().clone().subtract(0, 2, 0));
 
         if (args.length != 0) {
-            NamespacedKey key = new NamespacedKey(LuckyPanda.getInstance(), args[0]);
 
             for (Surprise surprise : LuckyPanda.getInstance().getSurprises()) {
-                if (surprise.getId().equals(key)) {
+                if (surprise.getId().getKey().equals(args[0])) {
                     surprise.process(player, block);
                     return true;
                 }
             }
-            player.sendMessage("There isn't an element with this ID, you dumb blob.");
+            player.sendMessage("There isn't an element with this ID, you not-so-dumb blob.");
         } else {
             chooseSurprise().process(player, block);
         }

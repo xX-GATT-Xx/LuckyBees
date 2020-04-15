@@ -19,12 +19,13 @@ public class HoleSurprise implements Surprise {
 
     @Override
     public void process(@Nonnull Player player, @Nonnull Block block) {
-        Location playerLoc = player.getLocation();
+        final Location playerLoc = player.getLocation();
         for (int x = -4; x < 4; x++) {
             for (int z = -4; z < 4; z++) {
                 for (int y = block.getY() + 1; y >= 0; y--) {
-                    block.getWorld().getBlockAt(
-                        playerLoc.getBlockX() + x, y,  playerLoc.getBlockZ() + z).setType(Material.AIR);
+                    block.getWorld()
+                        .getBlockAt(playerLoc.getBlockX() + x, y,  playerLoc.getBlockZ() + z)
+                        .setType(Material.AIR);
                 }
             }
         }

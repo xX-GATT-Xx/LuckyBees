@@ -60,7 +60,7 @@ public final class LuckyPanda extends JavaPlugin implements SlimefunAddon {
         return null;
     }
 
-    protected Set<Surprise> getSurprises() {
+    public Set<Surprise> getSurprises() {
         return surprises;
     }
 
