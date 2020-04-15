@@ -23,12 +23,12 @@ public class LuckyCommand implements CommandExecutor {
         if (args.length != 0) {
 
             for (Surprise surprise : LuckyPanda.getInstance().getSurprises()) {
-                if (surprise.getId().getKey().equals(args[0])) {
+                if (surprise.getId().getKey().equalsIgnoreCase(args[0])) {
                     surprise.process(player, block);
                     return true;
                 }
             }
-            player.sendMessage("There isn't an element with this ID, you not-so-dumb blob.");
+            player.sendMessage("There isn't an element with this ID. Please try again");
         } else {
             chooseSurprise().process(player, block);
         }
