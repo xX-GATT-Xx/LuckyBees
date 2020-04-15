@@ -5,8 +5,6 @@ import dev.j3fftw.luckypanda.surprise.JailAnvilSurprise;
 import dev.j3fftw.luckypanda.surprise.JailLavaSurprise;
 import dev.j3fftw.luckypanda.surprise.Surprise;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
-import org.bukkit.Bukkit;
-import org.bukkit.NamespacedKey;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashSet;

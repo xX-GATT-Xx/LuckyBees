@@ -1,8 +1,6 @@
 package dev.j3fftw.luckypanda;
 
-import dev.j3fftw.luckypanda.surprise.HoleSurprise;
 import dev.j3fftw.luckypanda.surprise.Surprise;
-import org.bukkit.NamespacedKey;
 import org.bukkit.block.Block;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -28,7 +26,7 @@ public class LuckyCommand implements CommandExecutor {
                     return true;
                 }
             }
-            player.sendMessage("There isn't an element with this ID. Please try again");
+            player.sendMessage("There isn't an element with this ID, please try again.");
         } else {
             chooseSurprise().process(player, block);
         }
