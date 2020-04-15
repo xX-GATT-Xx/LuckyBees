@@ -1,6 +1,7 @@
 package dev.j3fftw.luckypanda.surprise;
 
 import dev.j3fftw.luckypanda.LuckyPanda;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.block.Block;
@@ -18,10 +19,12 @@ public class HoleSurprise implements Surprise {
 
     @Override
     public void process(@Nonnull Player player, @Nonnull Block block) {
+        Location playerLoc = player.getLocation();
         for (int x = -4; x < 4; x++) {
             for (int z = -4; z < 4; z++) {
-                for (int y = block.getY(); y > 0; y--) {
-                    block.getWorld().getBlockAt(x, y, z).setType(Material.AIR);
+                for (int y = block.getY() + 1; y >= 0; y--) {
+                    block.getWorld().getBlockAt(
+                        playerLoc.getBlockX() + x, y,  playerLoc.getBlockZ() + z).setType(Material.AIR);
                 }
             }
         }

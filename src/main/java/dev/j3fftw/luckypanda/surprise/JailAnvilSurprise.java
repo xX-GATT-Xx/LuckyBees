@@ -26,12 +26,13 @@ public class JailAnvilSurprise implements Surprise {
                 playerLoc.clone().add(2 - x, -1, 2 - z).getBlock().setType(Material.STONE_BRICKS);
             }
         }
-        for (byte h = 0; h < 3; h++) {
-            for (byte x = 0; x < 2; x++) {
-                for (byte z = 0; z < 2; z++) {
+        for (byte h = 0; h < 4; h++) {
+            for (byte x = 0; x < 3; x++) {
+                for (byte z = 0; z < 3; z++) {
                     playerLoc.clone().add(1 - x, h, 1 - z).getBlock().setType(Material.IRON_BARS);
                 }
             }
+            playerLoc.clone().add(0,h,0).getBlock().setType(Material.AIR);
         }
         playerLoc.clone().add(0, 50, 0).getBlock().setType(Material.ANVIL);
         playerLoc.clone().add(0, 51, 0).getBlock().setType(Material.ANVIL);

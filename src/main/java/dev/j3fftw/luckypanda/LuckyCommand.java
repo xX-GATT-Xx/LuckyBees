@@ -2,6 +2,8 @@ package dev.j3fftw.luckypanda;
 
 import dev.j3fftw.luckypanda.surprise.HoleSurprise;
 import dev.j3fftw.luckypanda.surprise.Surprise;
+import org.bukkit.NamespacedKey;
+import org.bukkit.block.Block;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -14,10 +16,23 @@ public class LuckyCommand implements CommandExecutor {
 
     @Override
     @ParametersAreNonnullByDefault
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
+    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
         Player player = (Player) commandSender;
+        Block block = player.getWorld().getBlockAt(player.getLocation().clone().subtract(0, 2, 0));
 
-        chooseSurprise().process(player, player.getWorld().getBlockAt(player.getLocation().clone().subtract(0, 2, 0)));
+        if (args.length != 0) {
+            NamespacedKey key = new NamespacedKey(LuckyPanda.getInstance(), args[0]);
+
+            for (Surprise surprise : LuckyPanda.getInstance().getSurprises()) {
+                if (surprise.getId().equals(key)) {
+                    surprise.process(player, block);
+                    return true;
+                }
+            }
+            player.sendMessage("There isn't an element with this ID, you dumb blob.");
+        } else {
+            chooseSurprise().process(player, block);
+        }
         return true;
     }
 
