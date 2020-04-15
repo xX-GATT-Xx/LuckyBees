@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 
 import javax.annotation.Nonnull;
 
-public class HoleSurprise  implements Surprise {
+public class HoleSurprise implements Surprise {
 
     @Nonnull
     @Override
