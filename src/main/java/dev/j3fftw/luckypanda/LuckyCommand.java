@@ -1,14 +1,14 @@
 package dev.j3fftw.luckypanda;
 
-    import dev.j3fftw.luckypanda.surprise.HoleSurprise;
-    import dev.j3fftw.luckypanda.surprise.Surprise;
-    import org.bukkit.command.Command;
-    import org.bukkit.command.CommandExecutor;
-    import org.bukkit.command.CommandSender;
-    import org.bukkit.entity.Player;
+import dev.j3fftw.luckypanda.surprise.HoleSurprise;
+import dev.j3fftw.luckypanda.surprise.Surprise;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
-    import javax.annotation.ParametersAreNonnullByDefault;
-    import java.util.concurrent.ThreadLocalRandom;
+import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class LuckyCommand implements CommandExecutor {
 
@@ -24,6 +24,6 @@ public class LuckyCommand implements CommandExecutor {
     private Surprise chooseSurprise() {
         double random = ThreadLocalRandom.current().nextDouble() + ThreadLocalRandom.current().nextInt(101);
 
-        return new HoleSurprise();
+        return LuckyPanda.getInstance().getRandomSurprise();
     }
 }
