@@ -24,7 +24,7 @@ public class HoleSurprise implements Surprise {
             for (int z = -4; z < 4; z++) {
                 for (int y = block.getY() + 1; y >= 0; y--) {
                     block.getWorld()
-                        .getBlockAt(playerLoc.getBlockX() + x, y,  playerLoc.getBlockZ() + z)
+                        .getBlockAt(playerLoc.getBlockX() + x, y, playerLoc.getBlockZ() + z)
                         .setType(Material.AIR);
                 }
             }
