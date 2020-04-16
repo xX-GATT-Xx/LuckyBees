@@ -8,4 +8,16 @@ main: dev.j3fftw.luckypanda.LuckyPanda
 
 commands:
   lucky:
-    description: No
+    description: Roll for a Surprise by running this command without killing an innocent panda. You monster..
+
+permissions:
+  lucky.*:
+    description: Allows the use of the command /lucky along with all of it's variants
+    default: op
+    children:
+      lucky.default: true
+      lucky.select: true
+  lucky.default:
+    description: Allows the user to roll for a random surprise by using /lucky
+  lucky.select:
+    description: Allows the user to get a specific surprise via /lucky <Surprise ID>
