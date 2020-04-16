@@ -21,13 +21,11 @@ public final class LuckyPanda extends JavaPlugin implements SlimefunAddon {
     @Override
     public void onEnable() {
         instance = this;
-
         addDefaultSurprises();
         loadConfiguration();
         this.saveConfig();
         getCommand("lucky").setExecutor(new LuckyCommand());
         getServer().getPluginManager().registerEvents(new Events(), this);
-
     }
 
     @Override
