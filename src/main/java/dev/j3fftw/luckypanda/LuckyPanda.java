@@ -7,6 +7,7 @@ import dev.j3fftw.luckypanda.surprise.Surprise;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import org.bukkit.plugin.java.JavaPlugin;
 
+
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
@@ -21,7 +22,9 @@ public final class LuckyPanda extends JavaPlugin implements SlimefunAddon {
     public void onEnable() {
         instance = this;
 
+
         this.saveDefaultConfig();
+
         addDefaultSurprises();
         getCommand("lucky").setExecutor(new LuckyCommand());
         getServer().getPluginManager().registerEvents(new Events(), this);
@@ -30,7 +33,6 @@ public final class LuckyPanda extends JavaPlugin implements SlimefunAddon {
     @Override
     public void onDisable() {
         instance = null;
-        this.saveConfig();
     }
 
     public JavaPlugin getJavaPlugin() {
@@ -52,7 +54,7 @@ public final class LuckyPanda extends JavaPlugin implements SlimefunAddon {
         }
     }
 
-    Surprise getRandomSurprise() {
+    public Surprise getRandomSurprise() {
         final int randomValue = ThreadLocalRandom.current().nextInt(surprises.size());
         short tmp = 0;
         for (Surprise surprise : surprises) {

@@ -18,23 +18,23 @@ public class LuckyCommand implements CommandExecutor {
     @ParametersAreNonnullByDefault
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
         if (commandSender instanceof ConsoleCommandSender) {
-            LuckyPanda.getInstance().getLogger().info("This command can only be ran by a player.");
+            commandSender.sendMessage("This command can only be ran by a player.");
             return true;
         }
         final Player player = (Player) commandSender;
         final Block block = player.getWorld().getBlockAt(player.getLocation().clone().subtract(0, 2, 0));
-
-        if (args.length != 0 && player.hasPermission("lucky.select")) {
-            for (Surprise surprise : LuckyPanda.getInstance().getSurprises()) {
-                if (surprise.getId().getKey().equalsIgnoreCase(args[0])) {
-                    surprise.process(player, block);
-                    return true;
+        if (player.hasPermission("lucky.admin")) {
+            if (args.length != 0) {
+                for (Surprise surprise : LuckyPanda.getInstance().getSurprises()) {
+                    if (surprise.getId().getKey().equalsIgnoreCase(args[0])) {
+                        surprise.process(player, block);
+                        return true;
+                    }
                 }
+                player.sendMessage(ChatColor.RED + "There isn't a surprise with this ID, please try again.");
+            } else {
+                chooseSurprise().process(player, block);
             }
-            player.sendMessage(ChatColor.RED + "There isn't a surprise with this ID, please try again.");
-            return true;
-        } else if (player.hasPermission("lucky.default")) {
-            chooseSurprise().process(player, block);
             return true;
         } else {
             player.sendMessage(ChatColor.RED + "You don't have the permissions to run this command.");
