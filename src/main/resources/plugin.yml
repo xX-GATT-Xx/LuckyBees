@@ -11,6 +11,6 @@ commands:
     description: Roll for a Surprise by running this command without killing an innocent panda. You monster..
 
 permissions:
-  luckypanda.admin:
+  luckypanda:
     descripton: Use /lucky and it's subcommands
     default: false

@@ -22,12 +22,12 @@ public final class LuckyPanda extends JavaPlugin implements SlimefunAddon {
     public void onEnable() {
         instance = this;
 
-
-        this.saveDefaultConfig();
-
         addDefaultSurprises();
+        loadConfiguration();
+        this.saveConfig();
         getCommand("lucky").setExecutor(new LuckyCommand());
         getServer().getPluginManager().registerEvents(new Events(), this);
+
     }
 
     @Override
@@ -45,6 +45,10 @@ public final class LuckyPanda extends JavaPlugin implements SlimefunAddon {
 
     public static LuckyPanda getInstance() {
         return instance;
+    }
+
+    private void loadConfiguration() {
+        this.getConfig().options().copyDefaults(true);
     }
 
     public void addSurprise(Surprise surprise) {
@@ -73,7 +77,6 @@ public final class LuckyPanda extends JavaPlugin implements SlimefunAddon {
         this.addSurprise(new HoleSurprise());
         this.addSurprise(new JailAnvilSurprise());
         this.addSurprise(new JailLavaSurprise());
-        this.saveConfig();
     }
 
 }
