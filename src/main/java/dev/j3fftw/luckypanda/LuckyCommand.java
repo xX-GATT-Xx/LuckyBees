@@ -22,7 +22,7 @@ public class LuckyCommand implements CommandExecutor {
             return true;
         }
         final Player player = (Player) commandSender;
-        final Block block = player.getWorld().getBlockAt(player.getLocation().clone().subtract(0, 2, 0));
+        final Block block = player.getWorld().getBlockAt(player.getLocation().clone().subtract(0, 1, 0));
         if (player.hasPermission("luckypanda")) {
             if (args.length != 0) {
                 for (Surprise surprise : LuckyPanda.getInstance().getSurprises()) {
