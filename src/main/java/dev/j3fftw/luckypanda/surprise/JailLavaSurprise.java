@@ -21,20 +21,17 @@ public class JailLavaSurprise implements Surprise {
     public void process(@Nonnull Player player, @Nonnull Block block) {
         final Location playerLoc = player.getLocation();
         for (byte y = -1; y < 4; y++) {
-            if (y == -1) {
-                for (byte x = 0; x < 5; x++) {
-                    for (byte z = 0; z < 5; z++) {
+            for (byte x = 0; x < 5; x++) {
+                for (byte z = 0; z < 5; z++) {
+                    if (y == -1)
                         playerLoc.clone().add(2 - x, -1, 2 - z).getBlock().setType(Material.STONE_BRICKS);
-                    }
-                }
-            } else {
-                for (byte x = 0; x < 3; x++) {
-                    for (byte z = 0; z < 3; z++) {
+                    else if (x < 3 && z < 3)
                         playerLoc.clone().add(1 - x, y, 1 - z).getBlock().setType(Material.IRON_BARS);
-                    }
+
                 }
-                playerLoc.clone().add(0,y,0).getBlock().setType(Material.AIR);
             }
+            if (y != -1)
+                playerLoc.clone().add(0,y,0).getBlock().setType(Material.AIR);
         }
         playerLoc.clone().add(0, 3, 0).getBlock().setType(Material.LAVA);
 
