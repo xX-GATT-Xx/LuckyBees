@@ -25,14 +25,15 @@ public class JailLavaSurprise implements Surprise {
                 for (byte z = 2; z > -3; z--) {
                     if (y == -1)
                         playerLoc.clone().add(x, -1, z).getBlock().setType(Material.STONE_BRICKS);
-                    else if (x == 0 && z == 0)
-                        continue;
+                    else if (x == 0 && z == 0) {
+                        if (y == 3) {
+                            playerLoc.clone().add(x,y,z).getBlock().setType(Material.LAVA);
+                        }
+                    }
                     else if (x > -2 && x < 2 && z > -2 && z < 2)
                         playerLoc.clone().add(x , y, z ).getBlock().setType(Material.IRON_BARS);
                 }
             }
         }
-        playerLoc.clone().add(0, 3, 0).getBlock().setType(Material.LAVA);
-
     }
 }

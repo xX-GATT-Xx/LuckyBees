@@ -24,7 +24,7 @@ public class JailAnvilSurprise implements Surprise {
             for (byte x = 2; x > -3; x--) {
                 for (byte z = 2; z > -3; z--) {
                     if (y == -1)
-                        playerLoc.clone().add(x, -1, z).getBlock().setType(Material.STONE_BRICKS);
+                        playerLoc.clone().add(x, y, z).getBlock().setType(Material.STONE_BRICKS);
                     else if (x == 0 && z == 0)
                         continue;
                     else if (x > -2 && x < 2 && z > -2 && z < 2)
