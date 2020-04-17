@@ -8,4 +8,9 @@ main: dev.j3fftw.luckypanda.LuckyPanda
 
 commands:
   lucky:
-    description: No
+    description: Roll for a Surprise by running this command without killing an innocent panda. You monster..
+
+permissions:
+  luckypanda.admin:
+    descripton: Use /lucky and it's subcommands
+    default: false

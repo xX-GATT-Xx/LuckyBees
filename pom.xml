@@ -75,9 +75,6 @@
                         <goals>
                             <goal>shade</goal>
                         </goals>
-                        <configuration>
-                            <outputFile>/home/walshy/Documents/Servers/Test/plugins/EnderPanda.jar</outputFile>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>
