@@ -6,11 +6,13 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.block.Block;
+import org.bukkit.block.data.type.Switch;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Panda;
 import org.bukkit.entity.Player;
 
 import javax.annotation.Nonnull;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class BabyPandaSurprise implements Surprise {
 
@@ -24,27 +26,48 @@ public class BabyPandaSurprise implements Surprise {
     public void process(@Nonnull Player player, @Nonnull Block block) {
         final Location location = player.getLocation();
         for (int i = 1; i <= 10; i++) {
-            final Panda panda = (Panda) location.getWorld().spawnEntity(location, EntityType.PANDA);
+            final Panda panda = (Panda) location.getWorld().spawnEntity(
+                location.clone().add(
+                    ThreadLocalRandom.current().nextDouble(5),
+                    ThreadLocalRandom.current().nextDouble(1),
+                    ThreadLocalRandom.current().nextDouble(5)
+                ),
+                EntityType.PANDA
+            );
+
             panda.setBaby();
+            panda.setAgeLock(true);
             panda.setCustomNameVisible(true);
-            if (i == 5) {
+            if (i == 1) {
+                setRarePanda(location, panda, player);
+            }
+        }
+    }
+
+    private void setRarePanda(@Nonnull Location location, Panda panda, Player player) {
+        final int rarePanda = ThreadLocalRandom.current().nextInt(3);
+        switch (rarePanda) {
+            case 0:
                 panda.setCustomName(ChatColor.of("#FB9900") + "The Almighty Walshy");
                 panda.setMainGene(Panda.Gene.AGGRESSIVE);
                 panda.setTarget(player);
                 panda.setCanPickupItems(true);
                 panda.isBreedItem(Material.ACACIA_FENCE_GATE);
-            } else if (i == 7) {
+                break;
+            case 1:
                 panda.setCustomName(ChatColor.of("#0099FF") + "The Crazy Sefi");
                 panda.setMainGene(Panda.Gene.PLAYFUL);
                 panda.setAdult();
-                panda.addPassenger(location.getWorld().spawnEntity(location, EntityType.BOAT));
+                location.getWorld().spawnEntity(location, EntityType.BOAT);
                 panda.isBreedItem(Material.BEETROOT_SEEDS);
-            } else if (i == 9) {
+                break;
+            case 2:
                 panda.setCustomName(ChatColor.of("#803CA1") + "The Lazy Jeff");
                 panda.setMainGene(Panda.Gene.LAZY);
                 panda.setVisualFire(true);
-            }
-
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + rarePanda);
         }
     }
 }

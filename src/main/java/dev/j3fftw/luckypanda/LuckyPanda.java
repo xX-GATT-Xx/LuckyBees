@@ -43,11 +43,11 @@ public final class LuckyPanda extends JavaPlugin {
 
     public Surprise getRandomSurprise() {
         final int chance = ThreadLocalRandom.current().nextInt(0, 10);
-        if (chance == 0) {
+//        if (chance == 0) {
             final int randomValue = ThreadLocalRandom.current().nextInt(surprises.size());
             return surprises.get(randomValue);
-        }
-        return null;
+//        }
+//        return null;
     }
 
     public List<Surprise> getSurprises() {
