@@ -1,29 +1,26 @@
 package dev.j3fftw.luckypanda;
 
+import dev.j3fftw.luckypanda.surprise.BabyPandaSurprise;
 import dev.j3fftw.luckypanda.surprise.HoleSurprise;
 import dev.j3fftw.luckypanda.surprise.JailAnvilSurprise;
 import dev.j3fftw.luckypanda.surprise.JailLavaSurprise;
 import dev.j3fftw.luckypanda.surprise.Surprise;
-import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import org.bukkit.plugin.java.JavaPlugin;
 
-
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
-public final class LuckyPanda extends JavaPlugin implements SlimefunAddon {
+public final class LuckyPanda extends JavaPlugin {
 
     private static LuckyPanda instance;
 
-    private final Set<Surprise> surprises = new HashSet<>();
+    private final List<Surprise> surprises = new ArrayList<>();
 
     @Override
     public void onEnable() {
         instance = this;
         addDefaultSurprises();
-        this.getConfig().options().copyDefaults(true);
-        this.saveConfig();
         getCommand("lucky").setExecutor(new LuckyCommand());
         getServer().getPluginManager().registerEvents(new Events(), this);
     }
@@ -31,14 +28,6 @@ public final class LuckyPanda extends JavaPlugin implements SlimefunAddon {
     @Override
     public void onDisable() {
         instance = null;
-    }
-
-    public JavaPlugin getJavaPlugin() {
-        return this;
-    }
-
-    public String getBugTrackerURL() {
-        return "https://github.com/j3fftw/LuckyPanda/issues/";
     }
 
     public static LuckyPanda getInstance() {
@@ -53,17 +42,15 @@ public final class LuckyPanda extends JavaPlugin implements SlimefunAddon {
     }
 
     public Surprise getRandomSurprise() {
-        final int randomValue = ThreadLocalRandom.current().nextInt(surprises.size());
-        short tmp = 0;
-        for (Surprise surprise : surprises) {
-            if (tmp++ == randomValue) {
-                return surprise;
-            }
+        final int chance = ThreadLocalRandom.current().nextInt(0, 10);
+        if (chance == 0) {
+            final int randomValue = ThreadLocalRandom.current().nextInt(surprises.size());
+            return surprises.get(randomValue);
         }
         return null;
     }
 
-    public Set<Surprise> getSurprises() {
+    public List<Surprise> getSurprises() {
         return surprises;
     }
 
@@ -71,6 +58,7 @@ public final class LuckyPanda extends JavaPlugin implements SlimefunAddon {
         this.addSurprise(new HoleSurprise());
         this.addSurprise(new JailAnvilSurprise());
         this.addSurprise(new JailLavaSurprise());
+        this.addSurprise(new BabyPandaSurprise());
     }
 
 }

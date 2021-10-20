@@ -13,8 +13,4 @@ public interface Surprise {
 
     void process(@Nonnull Player player, @Nonnull Block block);
 
-    default double getChance() {
-        // Same chance for everything else.
-        return -1;
-    }
 }
