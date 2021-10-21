@@ -6,7 +6,6 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.block.Block;
-import org.bukkit.block.data.type.Switch;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Panda;
 import org.bukkit.entity.Player;
@@ -45,7 +44,7 @@ public class BabyPandaSurprise implements Surprise {
     }
 
     private void setRarePanda(@Nonnull Location location, Panda panda, Player player) {
-        final int rarePanda = ThreadLocalRandom.current().nextInt(3);
+        final int rarePanda = ThreadLocalRandom.current().nextInt(5);
         switch (rarePanda) {
             case 0:
                 panda.setCustomName(ChatColor.of("#FB9900") + "The Almighty Walshy");
@@ -66,6 +65,22 @@ public class BabyPandaSurprise implements Surprise {
                 panda.setMainGene(Panda.Gene.LAZY);
                 panda.setVisualFire(true);
                 break;
+            case 3:
+                final int chance = ThreadLocalRandom.current().nextInt(10);
+                if (chance == 1) {
+                    panda.setCustomName(ChatColor.of("#0704E0") + "The Mathy Blueberry");
+                } else {
+                    // Sorry blame Walshy
+                    panda.setCustomName(ChatColor.of("#0704E0") + "A Dumb Fuck");
+                }
+                panda.setMainGene(Panda.Gene.WORRIED);
+                panda.isBreedItem(Material.WAXED_EXPOSED_CUT_COPPER_STAIRS);
+                panda.setGlowing(true);
+            case 4:
+                panda.setCustomName(ChatColor.of("#363680") + "Big Busy Biscuit");
+                panda.setMainGene(Panda.Gene.WORRIED);
+                panda.setHealth(1000);
+                panda.isBreedItem(Material.COOKIE);
             default:
                 throw new IllegalStateException("Unexpected value: " + rarePanda);
         }

@@ -1,10 +1,13 @@
 package dev.j3fftw.luckypanda;
 
 import dev.j3fftw.luckypanda.surprise.BabyPandaSurprise;
+import dev.j3fftw.luckypanda.surprise.FlyingPandaSurprise;
 import dev.j3fftw.luckypanda.surprise.HoleSurprise;
 import dev.j3fftw.luckypanda.surprise.JailAnvilSurprise;
 import dev.j3fftw.luckypanda.surprise.JailLavaSurprise;
+import dev.j3fftw.luckypanda.surprise.StackedPandasSurprise;
 import dev.j3fftw.luckypanda.surprise.Surprise;
+import dev.j3fftw.luckypanda.surprise.TryAgainPandaSurprise;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
@@ -30,10 +33,6 @@ public final class LuckyPanda extends JavaPlugin {
         instance = null;
     }
 
-    public static LuckyPanda getInstance() {
-        return instance;
-    }
-
     public void addSurprise(Surprise surprise) {
         this.getConfig().addDefault(surprise.getId().toString(), true);
         if (this.getConfig().getBoolean(surprise.getId().toString())) {
@@ -44,8 +43,8 @@ public final class LuckyPanda extends JavaPlugin {
     public Surprise getRandomSurprise() {
         final int chance = ThreadLocalRandom.current().nextInt(0, 10);
 //        if (chance == 0) {
-            final int randomValue = ThreadLocalRandom.current().nextInt(surprises.size());
-            return surprises.get(randomValue);
+        final int randomValue = ThreadLocalRandom.current().nextInt(surprises.size());
+        return surprises.get(randomValue);
 //        }
 //        return null;
     }
@@ -59,6 +58,13 @@ public final class LuckyPanda extends JavaPlugin {
         this.addSurprise(new JailAnvilSurprise());
         this.addSurprise(new JailLavaSurprise());
         this.addSurprise(new BabyPandaSurprise());
+        this.addSurprise(new StackedPandasSurprise());
+        this.addSurprise(new FlyingPandaSurprise());
+        this.addSurprise(new TryAgainPandaSurprise());
+    }
+
+    public static LuckyPanda getInstance() {
+        return instance;
     }
 
 }
