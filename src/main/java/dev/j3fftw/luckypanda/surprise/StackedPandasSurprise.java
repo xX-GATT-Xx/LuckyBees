@@ -1,6 +1,7 @@
 package dev.j3fftw.luckypanda.surprise;
 
 import dev.j3fftw.luckypanda.LuckyPanda;
+import dev.j3fftw.luckypanda.Utils;
 import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
 import org.bukkit.World;
@@ -17,7 +18,7 @@ public class StackedPandasSurprise implements Surprise {
     @Nonnull
     @Override
     public NamespacedKey getId() {
-        return new NamespacedKey(LuckyPanda.getInstance(), "stacked_pandas");
+        return Utils.getKey("stacked_pandas");
     }
 
     @Override

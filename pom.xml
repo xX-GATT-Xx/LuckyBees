@@ -29,6 +29,14 @@
             <version>3.0.2</version>
             <scope>provided</scope>
         </dependency>
+
+<!--        change to dough-skins when the pr has been merged right now we have to use the full api for some dumb reason-->
+        <dependency>
+            <groupId>io.github.baked-libs</groupId>
+            <artifactId>dough-api</artifactId>
+            <version>1.0.3</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -59,12 +67,21 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
                 <version>2.3</version>
+                <configuration>
+                    <relocations>
+                        <relocation>
+                            <pattern>io.github.bakedlibs.dough</pattern>
+                            <shadedPattern>dev.j3fftw.dough</shadedPattern>
+                        </relocation>
+                    </relocations>
+                </configuration>
                 <executions>
                     <execution>
                         <goals>
                             <goal>shade</goal>
                         </goals>
                     </execution>
+
                 </executions>
             </plugin>
         </plugins>

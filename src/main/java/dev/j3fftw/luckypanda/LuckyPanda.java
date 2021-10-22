@@ -5,6 +5,10 @@ import dev.j3fftw.luckypanda.surprise.FlyingPandaSurprise;
 import dev.j3fftw.luckypanda.surprise.HoleSurprise;
 import dev.j3fftw.luckypanda.surprise.JailAnvilSurprise;
 import dev.j3fftw.luckypanda.surprise.JailLavaSurprise;
+import dev.j3fftw.luckypanda.surprise.PandaBootsSurprise;
+import dev.j3fftw.luckypanda.surprise.PandaChestplateSurprise;
+import dev.j3fftw.luckypanda.surprise.PandaLeggingSurprise;
+import dev.j3fftw.luckypanda.surprise.PandaSkullSurprise;
 import dev.j3fftw.luckypanda.surprise.StackedPandasSurprise;
 import dev.j3fftw.luckypanda.surprise.Surprise;
 import dev.j3fftw.luckypanda.surprise.TryAgainPandaSurprise;
@@ -61,6 +65,10 @@ public final class LuckyPanda extends JavaPlugin {
         this.addSurprise(new StackedPandasSurprise());
         this.addSurprise(new FlyingPandaSurprise());
         this.addSurprise(new TryAgainPandaSurprise());
+        this.addSurprise(new PandaSkullSurprise());
+        this.addSurprise(new PandaChestplateSurprise());
+        this.addSurprise(new PandaLeggingSurprise());
+        this.addSurprise(new PandaBootsSurprise());
     }
 
     public static LuckyPanda getInstance() {

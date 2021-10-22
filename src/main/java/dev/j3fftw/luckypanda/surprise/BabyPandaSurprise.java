@@ -1,6 +1,7 @@
 package dev.j3fftw.luckypanda.surprise;
 
 import dev.j3fftw.luckypanda.LuckyPanda;
+import dev.j3fftw.luckypanda.Utils;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -18,7 +19,7 @@ public class BabyPandaSurprise implements Surprise {
     @Nonnull
     @Override
     public NamespacedKey getId() {
-        return new NamespacedKey(LuckyPanda.getInstance(), "baby_panda");
+        return Utils.getKey("baby_panda");
     }
 
     @Override
@@ -76,11 +77,12 @@ public class BabyPandaSurprise implements Surprise {
                 panda.setMainGene(Panda.Gene.WORRIED);
                 panda.isBreedItem(Material.WAXED_EXPOSED_CUT_COPPER_STAIRS);
                 panda.setGlowing(true);
+                break;
             case 4:
                 panda.setCustomName(ChatColor.of("#363680") + "Big Busy Biscuit");
                 panda.setMainGene(Panda.Gene.WORRIED);
-                panda.setHealth(1000);
                 panda.isBreedItem(Material.COOKIE);
+                break;
             default:
                 throw new IllegalStateException("Unexpected value: " + rarePanda);
         }
