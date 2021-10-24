@@ -1,19 +1,24 @@
 package dev.j3fftw.luckypanda;
 
-import dev.j3fftw.luckypanda.surprise.BabyPandaSurprise;
-import dev.j3fftw.luckypanda.surprise.FlyingPandaSurprise;
-import dev.j3fftw.luckypanda.surprise.HoleSurprise;
-import dev.j3fftw.luckypanda.surprise.JailAnvilSurprise;
-import dev.j3fftw.luckypanda.surprise.JailLavaSurprise;
-import dev.j3fftw.luckypanda.surprise.PandaBootsSurprise;
-import dev.j3fftw.luckypanda.surprise.PandaChestplateSurprise;
-import dev.j3fftw.luckypanda.surprise.PandaLeggingSurprise;
-import dev.j3fftw.luckypanda.surprise.PandaSkullSurprise;
-import dev.j3fftw.luckypanda.surprise.StackedPandasSurprise;
 import dev.j3fftw.luckypanda.surprise.Surprise;
-import dev.j3fftw.luckypanda.surprise.TryAgainPandaSurprise;
+import dev.j3fftw.luckypanda.surprise.lucky.PandaBootsSurprise;
+import dev.j3fftw.luckypanda.surprise.lucky.PandaChestplateSurprise;
+import dev.j3fftw.luckypanda.surprise.lucky.PandaLeggingSurprise;
+import dev.j3fftw.luckypanda.surprise.lucky.PandaSkullSurprise;
+import dev.j3fftw.luckypanda.surprise.neutral.BabyPandaSurprise;
+import dev.j3fftw.luckypanda.surprise.neutral.FlyingPandaSurprise;
+import dev.j3fftw.luckypanda.surprise.neutral.StackedPandasSurprise;
+import dev.j3fftw.luckypanda.surprise.neutral.TryAgainPandaSurprise;
+import dev.j3fftw.luckypanda.surprise.unlucky.ExplodingPanda;
+import dev.j3fftw.luckypanda.surprise.unlucky.HoleSurprise;
+import dev.j3fftw.luckypanda.surprise.unlucky.JailAnvilSurprise;
+import dev.j3fftw.luckypanda.surprise.unlucky.JailLavaSurprise;
+import io.github.bakedlibs.dough.protection.ProtectionManager;
+import io.github.bakedlibs.dough.updater.GitHubBuildsUpdater;
+import org.bstats.bukkit.Metrics;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -24,12 +29,30 @@ public final class LuckyPanda extends JavaPlugin {
 
     private final List<Surprise> surprises = new ArrayList<>();
 
+    private ProtectionManager protectionManager;
+
     @Override
     public void onEnable() {
         instance = this;
+
+        if (!new File(this.getDataFolder(), "config.yml").exists()) {
+            saveDefaultConfig();
+        }
+
+        new Metrics(this, 13134);
+
+        // Only here because Sefi is an asshole
+        if (this.getConfig().getBoolean("options.auto-update")
+            && !this.getDescription().getVersion().equals("Unofficial")
+        ) {
+            new GitHubBuildsUpdater(this, getFile(), "J3fftw/LuckyPandas/master").start();
+        }
+
         addDefaultSurprises();
         getCommand("lucky").setExecutor(new LuckyCommand());
         getServer().getPluginManager().registerEvents(new Events(), this);
+
+        protectionManager = new ProtectionManager(this.getServer());
     }
 
     @Override
@@ -69,6 +92,11 @@ public final class LuckyPanda extends JavaPlugin {
         this.addSurprise(new PandaChestplateSurprise());
         this.addSurprise(new PandaLeggingSurprise());
         this.addSurprise(new PandaBootsSurprise());
+        this.addSurprise(new ExplodingPanda());
+    }
+
+    public ProtectionManager getProtectionManager() {
+        return protectionManager;
     }
 
     public static LuckyPanda getInstance() {

@@ -1,10 +1,11 @@
-package dev.j3fftw.luckypanda.surprise;
+package dev.j3fftw.luckypanda.surprise.unlucky;
 
-import dev.j3fftw.luckypanda.LuckyPanda;
+import dev.j3fftw.luckypanda.Utils;
+import dev.j3fftw.luckypanda.surprise.Surprise;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
-import org.bukkit.block.Block;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
 import javax.annotation.Nonnull;
@@ -14,11 +15,11 @@ public class JailLavaSurprise implements Surprise {
     @Nonnull
     @Override
     public NamespacedKey getId() {
-        return new NamespacedKey(LuckyPanda.getInstance(), "jail_lava");
+        return Utils.getKey("jail_lava");
     }
 
     @Override
-    public void process(@Nonnull Player player, @Nonnull Block block) {
+    public void process(@Nonnull Player player, @Nonnull Entity entity) {
         final Location playerLoc = player.getLocation();
         for (byte y = -1; y < 4; y++) {
             for (byte x = 2; x > -3; x--) {

@@ -1,6 +1,6 @@
 name: LuckyPanda
 description: LuckyPandas!!!!
-version: 1.0
+version: ${project.version}
 api-version: 1.16
 author: J3fftw/WalshyDev
 main: dev.j3fftw.luckypanda.LuckyPanda

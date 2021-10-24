@@ -1,12 +1,12 @@
-package dev.j3fftw.luckypanda.surprise;
+package dev.j3fftw.luckypanda.surprise.neutral;
 
-import dev.j3fftw.luckypanda.LuckyPanda;
 import dev.j3fftw.luckypanda.Utils;
+import dev.j3fftw.luckypanda.surprise.Surprise;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
-import org.bukkit.block.Block;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Panda;
 import org.bukkit.entity.Player;
@@ -23,16 +23,13 @@ public class BabyPandaSurprise implements Surprise {
     }
 
     @Override
-    public void process(@Nonnull Player player, @Nonnull Block block) {
+    public void process(@Nonnull Player player, @Nonnull Entity entity) {
         final Location location = player.getLocation();
         for (int i = 1; i <= 10; i++) {
-            final Panda panda = (Panda) location.getWorld().spawnEntity(
-                location.clone().add(
-                    ThreadLocalRandom.current().nextDouble(5),
-                    ThreadLocalRandom.current().nextDouble(1),
-                    ThreadLocalRandom.current().nextDouble(5)
-                ),
-                EntityType.PANDA
+            final Panda panda = Utils.spawnSurprisedPanda(location.clone().add(
+                ThreadLocalRandom.current().nextDouble(5),
+                ThreadLocalRandom.current().nextDouble(1),
+                ThreadLocalRandom.current().nextDouble(5))
             );
 
             panda.setBaby();

@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>dev.j3fftw</groupId>
   <artifactId>LuckyPandas</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>Unofficial</version>
   <build>
     <sourceDirectory>src/main/java</sourceDirectory>
     <defaultGoal>clean package</defaultGoal>
@@ -41,7 +41,11 @@
           <relocations>
             <relocation>
               <pattern>io.github.bakedlibs.dough</pattern>
-              <shadedPattern>dev.j3fftw.dough</shadedPattern>
+              <shadedPattern>dev.j3fftw.luckypanda.dough</shadedPattern>
+            </relocation>
+            <relocation>
+              <pattern>org.bstats</pattern>
+              <shadedPattern>dev.j3fftw.luckypanda.bstats</shadedPattern>
             </relocation>
           </relocations>
         </configuration>

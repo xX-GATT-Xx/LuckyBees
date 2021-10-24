@@ -1,13 +1,14 @@
-package dev.j3fftw.luckypanda.surprise;
+package dev.j3fftw.luckypanda.surprise.lucky;
 
 import dev.j3fftw.luckypanda.Constants;
 import dev.j3fftw.luckypanda.Utils;
+import dev.j3fftw.luckypanda.surprise.Surprise;
 import io.github.bakedlibs.dough.skins.PlayerHead;
 import io.github.bakedlibs.dough.skins.PlayerSkin;
 import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
-import org.bukkit.block.Block;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -23,7 +24,7 @@ public class PandaSkullSurprise implements Surprise {
     }
 
     @Override
-    public void process(@Nonnull Player player, @Nonnull Block block) {
+    public void process(@Nonnull Player player, @Nonnull Entity entity) {
         final ItemStack pandaSkull = PlayerHead.getItemStack(PlayerSkin.fromHashCode(Constants.PANDA_SKULL));
         final ItemMeta itemMeta = pandaSkull.getItemMeta();
         itemMeta.setDisplayName(ChatColor.BLUE + "Panda Skull");

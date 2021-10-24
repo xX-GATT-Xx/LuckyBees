@@ -1,10 +1,10 @@
-package dev.j3fftw.luckypanda.surprise;
+package dev.j3fftw.luckypanda.surprise.neutral;
 
-import dev.j3fftw.luckypanda.LuckyPanda;
 import dev.j3fftw.luckypanda.Utils;
+import dev.j3fftw.luckypanda.surprise.Surprise;
 import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
-import org.bukkit.block.Block;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 
@@ -19,8 +19,8 @@ public class TryAgainPandaSurprise implements Surprise {
     }
 
     @Override
-    public void process(@Nonnull Player player, @Nonnull Block block) {
-        block.getLocation().getWorld().spawnEntity(block.getLocation().add(0, 1, 0), EntityType.PANDA);
+    public void process(@Nonnull Player player, @Nonnull Entity entity) {
+        entity.getLocation().getWorld().spawnEntity(entity.getLocation().add(0, 1, 0), EntityType.PANDA);
         player.sendMessage(ChatColor.BLUE + "You have gotten another chance");
     }
 }
