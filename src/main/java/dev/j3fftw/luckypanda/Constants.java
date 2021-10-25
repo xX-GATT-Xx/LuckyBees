@@ -11,6 +11,12 @@ public final class Constants {
 
     public static final NamespacedKey EXPLOSIVE_PANDA = Utils.getKey("explosive_panda");
 
+    public static final NamespacedKey PANDA_CANNON = Utils.getKey("panda_cannon");
+
+    public static final NamespacedKey CANNONED_PANDA = Utils.getKey("cannoned_panda");
+
+    public static final NamespacedKey LUCKY_POTION = Utils.getKey("lucky_potion");
+
     private Constants() {}
 
 }

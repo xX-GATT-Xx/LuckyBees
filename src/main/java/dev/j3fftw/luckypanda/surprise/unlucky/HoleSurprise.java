@@ -2,6 +2,7 @@ package dev.j3fftw.luckypanda.surprise.unlucky;
 
 import dev.j3fftw.luckypanda.LuckyPanda;
 import dev.j3fftw.luckypanda.surprise.Surprise;
+import io.github.bakedlibs.dough.protection.Interaction;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -26,9 +27,15 @@ public class HoleSurprise implements Surprise {
         for (int x = -4; x < 4; x++) {
             for (int z = -4; z < 4; z++) {
                 for (int y = block.getY() + 1; y >= 0; y--) {
-                    block.getWorld()
-                        .getBlockAt(playerLoc.getBlockX() + x, y, playerLoc.getBlockZ() + z)
-                        .setType(Material.AIR);
+                    if (LuckyPanda.getInstance().getProtectionManager()
+                        .hasPermission(player, block, Interaction.BREAK_BLOCK)
+                        && LuckyPanda.getInstance().getProtectionManager()
+                        .hasPermission(player, block, Interaction.PLACE_BLOCK)
+                    ) {
+                        block.getWorld()
+                            .getBlockAt(playerLoc.getBlockX() + x, y, playerLoc.getBlockZ() + z)
+                            .setType(Material.AIR);
+                    }
                 }
             }
         }

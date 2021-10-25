@@ -5,9 +5,7 @@
 * Spawn a lot of mobs that cant take damage chasing the player and make them disappear when they do damage to the player the damage wont be actual damage we will need to cancel
 * a flying panda that tells the player he is gonna haunt him forever
 * Panda Elixir - turns you into a panda (disguise) for a few mins (or until log out)
-* Panda Cannon. Stick that shoots invisible snowballs with a panda as a passenger.
 * Panda food that gives extra saturation and 1 extra hearth but has a 1 in 100000 chance to kill you
-* lucky panda armor
 * Lucky panda spawn egg
     * Miner Panda - Finds the nearest random ore in x radius and mines it brings it back to the player
     * Farmer Panda - Farms nearby crops and brings it to the player
