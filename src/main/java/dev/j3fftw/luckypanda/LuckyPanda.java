@@ -3,12 +3,13 @@ package dev.j3fftw.luckypanda;
 import dev.j3fftw.luckypanda.surprise.Surprise;
 import dev.j3fftw.luckypanda.surprise.lucky.LuckyPotion;
 import dev.j3fftw.luckypanda.surprise.lucky.PandaBootsSurprise;
-import dev.j3fftw.luckypanda.surprise.lucky.PandaCanonSurprise;
+import dev.j3fftw.luckypanda.surprise.lucky.PandaCannonSurprise;
 import dev.j3fftw.luckypanda.surprise.lucky.PandaChestplateSurprise;
 import dev.j3fftw.luckypanda.surprise.lucky.PandaLeggingSurprise;
 import dev.j3fftw.luckypanda.surprise.lucky.PandaSkullSurprise;
 import dev.j3fftw.luckypanda.surprise.neutral.BabyPandaSurprise;
 import dev.j3fftw.luckypanda.surprise.neutral.FlyingPandaSurprise;
+import dev.j3fftw.luckypanda.surprise.neutral.PandaFirework;
 import dev.j3fftw.luckypanda.surprise.neutral.StackedPandasSurprise;
 import dev.j3fftw.luckypanda.surprise.neutral.TryAgainPandaSurprise;
 import dev.j3fftw.luckypanda.surprise.unlucky.ExplodingPanda;
@@ -95,8 +96,9 @@ public final class LuckyPanda extends JavaPlugin {
         this.addSurprise(new PandaLeggingSurprise());
         this.addSurprise(new PandaBootsSurprise());
         this.addSurprise(new ExplodingPanda());
-        this.addSurprise(new PandaCanonSurprise());
+        this.addSurprise(new PandaCannonSurprise());
         this.addSurprise(new LuckyPotion());
+        this.addSurprise(new PandaFirework());
     }
 
     public ProtectionManager getProtectionManager() {

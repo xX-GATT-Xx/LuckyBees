@@ -14,19 +14,19 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import javax.annotation.Nonnull;
 
-public class PandaCanonSurprise implements Surprise {
+public class PandaCannonSurprise implements Surprise {
 
     @Nonnull
     @Override
     public NamespacedKey getId() {
-        return Utils.getKey("panda_canon");
+        return Utils.getKey("panda_cannon");
     }
 
     @Override
     public void process(@Nonnull Player player, @Nonnull Entity entity) {
         final ItemStack itemStack = new ItemStack(Material.BAMBOO);
         final ItemMeta itemMeta = itemStack.getItemMeta();
-        itemMeta.setDisplayName(ChatColor.of("#0FA311") + "Panda Canon");
+        itemMeta.setDisplayName(ChatColor.of("#0FA311") + "Panda Cannon");
         PersistentDataAPI.setBoolean(itemMeta, Constants.PANDA_CANNON, true);
         itemStack.setItemMeta(itemMeta);
         entity.getWorld().dropItemNaturally(entity.getLocation(), itemStack);

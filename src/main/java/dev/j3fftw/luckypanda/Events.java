@@ -5,6 +5,7 @@ import io.github.bakedlibs.dough.data.persistent.PersistentDataAPI;
 import io.github.bakedlibs.dough.protection.Interaction;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.Firework;
 import org.bukkit.entity.Panda;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -12,6 +13,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
+import org.bukkit.event.entity.FireworkExplodeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -71,12 +73,14 @@ public class Events implements Listener {
     @EventHandler
     public void onCanonUse(PlayerInteractEvent event) {
         final ItemStack itemStack = event.getPlayer().getInventory().getItemInMainHand();
-        final ItemMeta itemMeta = itemStack.getItemMeta();
-        final Location location = event.getPlayer().getLocation();
-        if (PersistentDataAPI.getBoolean(itemMeta, Constants.PANDA_CANNON)) {
-            Panda panda = Utils.spawnSurprisedPanda(location);
-            PersistentDataAPI.setBoolean(panda, Constants.CANNONED_PANDA, true);
-            panda.setVelocity(location.getDirection().multiply(3));
+        if (!itemStack.getType().isAir() && itemStack.hasItemMeta()) {
+            final ItemMeta itemMeta = itemStack.getItemMeta();
+            final Location location = event.getPlayer().getLocation();
+            if (PersistentDataAPI.getBoolean(itemMeta, Constants.PANDA_CANNON)) {
+                Panda panda = Utils.spawnSurprisedPanda(location);
+                PersistentDataAPI.setBoolean(panda, Constants.CANNONED_PANDA, true);
+                panda.setVelocity(location.getDirection().multiply(3));
+            }
         }
     }
 
@@ -87,6 +91,15 @@ public class Events implements Listener {
         ) {
             event.setCancelled(true);
             PersistentDataAPI.remove(event.getEntity(), Constants.CANNONED_PANDA);
+        }
+    }
+
+    @EventHandler
+    public void onFireworkExplode(FireworkExplodeEvent event) {
+        if (PersistentDataAPI.hasBoolean(event.getEntity(), Constants.SURPRISE_FIREWORK)) {
+            for (Entity passenger : event.getEntity().getPassengers()) {
+                passenger.remove();
+            }
         }
     }
 }

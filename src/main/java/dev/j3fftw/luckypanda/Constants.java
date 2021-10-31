@@ -17,6 +17,8 @@ public final class Constants {
 
     public static final NamespacedKey LUCKY_POTION = Utils.getKey("lucky_potion");
 
+    public static final NamespacedKey SURPRISE_FIREWORK = Utils.getKey("surprise_firework");
+
     private Constants() {}
 
 }
