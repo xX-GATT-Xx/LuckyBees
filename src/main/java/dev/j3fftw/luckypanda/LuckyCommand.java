@@ -23,7 +23,7 @@ public class LuckyCommand implements CommandExecutor {
         final Player player = (Player) commandSender;
         if (player.hasPermission("luckypanda.admin")) {
             if (args.length != 0) {
-                for (Surprise surprise : LuckyPanda.getInstance().getSurprises()) {
+                for (Surprise surprise : LuckyPanda.getInstance().getEnableSurprises()) {
                     if (surprise.getId().getKey().equalsIgnoreCase(args[0])) {
                         surprise.process(player, player);
                         return true;

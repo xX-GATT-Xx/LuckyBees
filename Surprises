@@ -1,7 +1,4 @@
 * Lucky panda tools
-* Lucky potion
-* Fireworks disguised as panda shooting up in the air
-* Fireworks disguised as panda shooting up in the air but exploding
 * Spawn a lot of mobs that cant take damage chasing the player and make them disappear when they do damage to the player the damage wont be actual damage we will need to cancel
 * a flying panda that tells the player he is gonna haunt him forever
 * Panda food that gives extra saturation and 1 extra hearth but has a 1 in 100000 chance to kill you
@@ -10,3 +7,5 @@
     * Farmer Panda - Farms nearby crops and brings it to the player
 
 Check how many pandas are killed bstats
+make all surprises out put something in chat/or a different place
+add sound effects + particle effects to all surprises

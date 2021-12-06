@@ -21,7 +21,6 @@ import io.github.bakedlibs.dough.updater.GitHubBuildsUpdater;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -30,7 +29,9 @@ public final class LuckyPanda extends JavaPlugin {
 
     private static LuckyPanda instance;
 
-    private final List<Surprise> surprises = new ArrayList<>();
+    private final List<Surprise> enableSurprises = new ArrayList<>();
+
+    private final List<Surprise> allSurprises = new ArrayList<>();
 
     private ProtectionManager protectionManager;
 
@@ -38,20 +39,18 @@ public final class LuckyPanda extends JavaPlugin {
     public void onEnable() {
         instance = this;
 
-        if (!new File(this.getDataFolder(), "config.yml").exists()) {
-            saveDefaultConfig();
-        }
+        addDefaultSurprises();
+        getConfig().options().copyDefaults(true);
+        saveConfig();
 
         new Metrics(this, 13134);
 
-        // Only here because Sefi is an asshole
         if (this.getConfig().getBoolean("options.auto-update")
             && !this.getDescription().getVersion().equals("Unofficial")
         ) {
             new GitHubBuildsUpdater(this, getFile(), "J3fftw/LuckyPandas/master").start();
         }
 
-        addDefaultSurprises();
         getCommand("lucky").setExecutor(new LuckyCommand());
         getServer().getPluginManager().registerEvents(new Events(), this);
 
@@ -66,21 +65,21 @@ public final class LuckyPanda extends JavaPlugin {
     public void addSurprise(Surprise surprise) {
         this.getConfig().addDefault(surprise.getId().toString(), true);
         if (this.getConfig().getBoolean(surprise.getId().toString())) {
-            surprises.add(surprise);
+            enableSurprises.add(surprise);
         }
     }
 
     public Surprise getRandomSurprise() {
         final int chance = ThreadLocalRandom.current().nextInt(0, 10);
-//        if (chance == 0) {
-        final int randomValue = ThreadLocalRandom.current().nextInt(surprises.size());
-        return surprises.get(randomValue);
-//        }
-//        return null;
+        if (chance == 0) {
+            final int randomValue = ThreadLocalRandom.current().nextInt(enableSurprises.size());
+            return enableSurprises.get(randomValue);
+        }
+        return null;
     }
 
-    public List<Surprise> getSurprises() {
-        return surprises;
+    public List<Surprise> getEnableSurprises() {
+        return enableSurprises;
     }
 
     private void addDefaultSurprises() {

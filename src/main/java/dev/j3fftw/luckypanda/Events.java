@@ -5,7 +5,6 @@ import io.github.bakedlibs.dough.data.persistent.PersistentDataAPI;
 import io.github.bakedlibs.dough.protection.Interaction;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.Firework;
 import org.bukkit.entity.Panda;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
