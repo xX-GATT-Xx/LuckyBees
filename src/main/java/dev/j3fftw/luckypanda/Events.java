@@ -3,6 +3,7 @@ package dev.j3fftw.luckypanda;
 import dev.j3fftw.luckypanda.surprise.Surprise;
 import io.github.bakedlibs.dough.data.persistent.PersistentDataAPI;
 import io.github.bakedlibs.dough.protection.Interaction;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Panda;
@@ -30,6 +31,9 @@ public class Events implements Listener {
             Surprise surprise = LuckyPanda.getInstance().getRandomSurprise();
             if (surprise != null) {
                 surprise.process(killer, killed);
+                killer.sendMessage(ChatColor.GREEN + "You are lucky this time!");
+            } else {
+                killer.sendMessage(ChatColor.GREEN + "Why the hell did you do that?");
             }
         }
     }
