@@ -9,3 +9,20 @@ As you all know, pandas are precious and should be protected at all costs. Howev
 What surprises? Well, you'll have to find out for yourself!
 
 Some are good, some are bad - none will be worth the death of such majestic creatures, but that's on your conscience!
+
+## All surprises
+* Lucky Potion
+* Panda Skull
+* Panda Chestplate
+* Panda Leggings
+* Panda Boots
+* Panda Cannon 
+* Baby Pandas
+* Flying Panda
+* Panda Fireworks
+* Stacked Pandas
+* Try Again Panda
+* Exploding Pandas
+* Huge hole
+* Anvil Jail 
+* Lava Jail
