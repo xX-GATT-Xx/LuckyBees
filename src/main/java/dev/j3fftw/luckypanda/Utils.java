@@ -26,8 +26,8 @@ public final class Utils {
     }
 
     public static Panda spawnSurprisedPanda(Location location) {
-        final Panda surprisePanda = (Panda) location.getWorld().spawnEntity(
-            location, EntityType.PANDA
+        final Panda surprisePanda = (Bee) location.getWorld().spawnEntity(
+            location, EntityType.BEE
 
         );
         PersistentDataAPI.setBoolean(surprisePanda, Constants.SURPRISE_PANDA, true);
