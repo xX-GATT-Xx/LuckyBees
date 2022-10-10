@@ -4,7 +4,7 @@ import io.github.bakedlibs.dough.data.persistent.PersistentDataAPI;
 import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Panda;
+import org.bukkit.entity.Bee;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.PotionMeta;
